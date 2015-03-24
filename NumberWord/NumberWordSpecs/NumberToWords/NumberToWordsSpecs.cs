@@ -28,13 +28,6 @@
         };
     }
 
-    public class when_given_one : WithNumberToWords
-    {
-        private Establish context = () => Input = 1;
-
-        private It should_return_one = () => Result.ToLower().ShouldEqual("one");
-    }
-
     public class when_given_thirteen : WithNumberToWords
     {
         private Establish context = () => Input = 13;
@@ -68,6 +61,13 @@
         private Establish context = () => Input = 1000;
 
         private It should_return_one_thousand = () => Result.ToLower().ShouldEqual("one thousand");
+    }
+
+    public class when_given_one : WithNumberToWords
+    {
+        private Establish context = () => Input = 1;
+
+        private It should_return_one = () => Result.ToLower().ShouldEqual("one");
     }
 
     public class when_given_zero : WithNumberToWords
