@@ -1,6 +1,7 @@
 ﻿using System;
 namespace ConsoleApplication1
 {
+    using System.Diagnostics;
     using System.Threading;
 
     using NumberWord;
@@ -64,11 +65,11 @@ namespace ConsoleApplication1
             switch (consoleKeyInfo.KeyChar)
             {
                 case '1':
-                    Console.WriteLine(GetAnswer(start, finish, verbose, step));
+                    Console.WriteLine(GetAnswer());
                     Console.WriteLine();
                     Console.WriteLine("Press any key to continue");
                     Console.ReadKey();
-                    
+
                     break;
                 case '2':
                     start = GetNumber("Start", start);
@@ -104,18 +105,28 @@ namespace ConsoleApplication1
             return initial;
         }
 
-        private static string ConvertBoolToOnOff(bool verbose)
+        private static string ConvertBoolToOnOff(bool conversion)
         {
-            return verbose ? "On" : "Off";
+            return conversion ? "On" : "Off";
         }
 
-        private static int GetAnswer(int start, int finish, bool verbose, int step)
+        private static int GetAnswer()
         {
             var count = 0;
 
             for (var i = start; i <= finish; i++)
             {
-                var words = NumberToWords.Convert(i);
+                string words;
+                try
+                {
+                    words = NumberToWords.Convert(i);
+                }
+                catch (ArgumentException ex)
+                {
+                    Console.WriteLine("Error converting number to words: {0}", ex.Message);
+                    return -1;
+                }
+
                 var letters = LetterCounter.Count(words);
                 count += letters;
 
