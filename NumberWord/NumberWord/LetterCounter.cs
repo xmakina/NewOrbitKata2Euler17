@@ -15,7 +15,6 @@
             var characters = input.ToCharArray();
 
             // ignore spaces and hyphens
-
             return characters.Count(character => character != ' ' && character != '-');
         }
     }

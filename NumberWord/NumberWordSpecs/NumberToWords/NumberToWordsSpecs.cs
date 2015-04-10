@@ -17,14 +17,7 @@
 
         private Because of = () =>
         {
-            try
-            {
-                Result = NumberToWords.Convert(Input);
-            }
-            catch (Exception ex)
-            {
-                Exception = ex;
-            }
+            Exception = Catch.Exception(() => Result = NumberToWords.Convert(Input));
         };
     }
 
