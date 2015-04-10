@@ -1,7 +1,6 @@
-﻿using System;
-namespace ConsoleApplication1
+﻿namespace ConsoleApplication1
 {
-    using System.Diagnostics;
+    using System;
     using System.Threading;
 
     using NumberWord;
@@ -16,6 +15,7 @@ namespace ConsoleApplication1
 
         private static int step;
 
+        // ReSharper disable once UnusedParameter.Local
         static void Main(string[] args)
         {
             start = 1;
